@@ -10,7 +10,6 @@ import Pagination from "../Pagination";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import useAtinaCalls from "../../hooks/useAtinaCalls";
-// import ColumnSelect from "../ColumnSelect";
 import NfcFilter from "../filters/NfcFilter";
 import { useMediaQuery } from "@mui/material";
 import ContextMenu from "../ContextMenu";
@@ -76,6 +75,9 @@ const ItemsTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [shownData, setShownData] = useState(atinaItems);
+  const [restart, setRestart] = useState(false);
+  const [itemType, setItemType] = useState(1);
+
   const handlePagination = () => {
     let currentPage = rowsPerPage * page;
     const newArray = atinaItems?.slice(currentPage, currentPage + rowsPerPage);
@@ -103,16 +105,15 @@ const ItemsTable = () => {
   const { handleRightClick } = useContextMenu(contextMenu, setContextMenu);
 
   useEffect(() => {
-    getAtinaItemsData();
+    getAtinaItemsData(itemType);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [restart, itemType]);
 
   useEffect(() => {
     handlePagination();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, rowsPerPage, atinaItems]);
-
   return (
     <>
       <NfcFilter
@@ -142,12 +143,44 @@ const ItemsTable = () => {
           position: "relative",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "end" }}>
-          {/* <ColumnSelect
-            tableColumns={tableColumns}
-            selectedColumns={selectedColumns}
-            setSelectedColumns={setSelectedColumns}
-          /> */}
+        <Box
+          sx={{ display: "flex", justifyContent: "end", alignItems: "center" }}
+        >
+          <span
+            style={{
+              padding: "10px",
+              backgroundColor: "#ddd",
+              cursor: "pointer",
+              borderRadius: "1rem",
+            }}
+            onClick={() => setItemType(1)}
+          >
+            Auftrag
+          </span>{" "}
+          {"--"}
+          <span
+            style={{
+              padding: "10px",
+              backgroundColor: "#ddd",
+              cursor: "pointer",
+              borderRadius: "1rem",
+            }}
+            onClick={() => setItemType(2)}
+          >
+            Zähler
+          </span>
+          {"--"}
+          <span
+            style={{
+              padding: "10px",
+              backgroundColor: "#ddd",
+              cursor: "pointer",
+              borderRadius: "1rem",
+            }}
+            onClick={() => setItemType(3)}
+          >
+            KFZ
+          </span>
           <Pagination
             data={atinaItems}
             page={page}
@@ -155,6 +188,7 @@ const ItemsTable = () => {
             rowsPerPage={rowsPerPage}
             setRowsPerPage={setRowsPerPage}
             handlePagination={handlePagination}
+            setRestart={setRestart}
           />
         </Box>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

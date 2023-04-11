@@ -78,6 +78,8 @@ const NfcTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [shownData, setShownData] = useState(nfcTags);
+  const [restart, setRestart] = useState(false);
+
   const handlePagination = () => {
     let currentPage = rowsPerPage * page;
     const newArray = nfcTags?.slice(currentPage, currentPage + rowsPerPage);
@@ -89,7 +91,6 @@ const NfcTable = () => {
   const [filterVal, setFilterVal] = useState({});
 
   const handleFilter = () => {};
-  console.log(filterVal);
   const handleReset = () => {
     setFilterVal({});
     handlePagination();
@@ -108,7 +109,7 @@ const NfcTable = () => {
   useEffect(() => {
     getNfcTagsData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [restart]);
 
   useEffect(() => {
     handlePagination();
@@ -157,6 +158,7 @@ const NfcTable = () => {
             rowsPerPage={rowsPerPage}
             setRowsPerPage={setRowsPerPage}
             handlePagination={handlePagination}
+            setRestart={setRestart}
           />
         </Box>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

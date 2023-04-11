@@ -59,7 +59,8 @@ const tableColumns = [
 const UsersTable = () => {
   const { atinaUsers } = useSelector((state) => state.atina);
   const [contextMenu, setContextMenu] = useState(initalContextMenu);
-
+  const [restart, setRestart] = useState(false);
+  console.log(restart);
   const { handleRightClick } = useContextMenu(contextMenu, setContextMenu);
 
   // ===pagination states START===
@@ -145,7 +146,7 @@ const UsersTable = () => {
   useEffect(() => {
     getUsersData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [restart]);
 
   useEffect(() => {
     handlePagination();
@@ -189,6 +190,7 @@ const UsersTable = () => {
             setPage={setPage}
             rowsPerPage={rowsPerPage}
             setRowsPerPage={setRowsPerPage}
+            setRestart={setRestart}
           />
         </Box>
         <Table

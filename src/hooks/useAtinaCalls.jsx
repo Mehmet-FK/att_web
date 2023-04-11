@@ -38,8 +38,8 @@ const useAtinaCalls = () => {
   const getUsersData = () => getAtinaData("AtinaUsers");
   const getMobileBookingsData = () => getAtinaData("api/AtinaMobileBookings");
   const getNfcTagsData = () => getAtinaData("AtinaNfcTags");
-  const getAtinaItemsData = () =>
-    getAtinaData("api/AtinaItems/search?filter=aufeld");
+  const getAtinaItemsData = (a) =>
+    getAtinaData(`api/AtinaItems/search?filter=aufeldgasse&type=${a}`);
   //PUT
   const putUserData = (info) => putAtinaData("AtinaUsers", info);
   return {

@@ -70,6 +70,8 @@ const MobileBookingsTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [shownData, setShownData] = useState();
+  const [restart, setRestart] = useState(false);
+
   const handlePagination = () => {
     let currentPage = rowsPerPage * page;
     const newArray = mobileBookings?.slice(
@@ -126,7 +128,7 @@ const MobileBookingsTable = () => {
     getMobileBookingsData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [restart]);
 
   useEffect(() => {
     handlePagination();
@@ -181,6 +183,7 @@ const MobileBookingsTable = () => {
             rowsPerPage={rowsPerPage}
             setRowsPerPage={setRowsPerPage}
             handlePagination={handlePagination}
+            setRestart={setRestart}
           />
         </Box>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
