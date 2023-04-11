@@ -117,18 +117,3 @@ const ContextMenu = ({
 };
 
 export default ContextMenu;
-
-//? BACKUP
-{
-  /* {tableColumns.map((name) => (
-          <MenuItem
-            key={name}
-            sx={{ padding: 0 }}
-            onClick={() => handleSelectColumn(name)}
-            value={name}
-          >
-            <Checkbox checked={selectedColumns.indexOf(name) > -1} />
-            <ListItemText sx={{ textTransform: "capitalize" }} primary={name} />
-          </MenuItem>
-        ))} */
-}

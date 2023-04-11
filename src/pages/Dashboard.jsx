@@ -26,7 +26,6 @@ import { Button, Paper, Tooltip, Typography } from "@mui/material";
 import ErrorModal from "../components/modals/ErrorModal";
 import Loading from "../components/Loading";
 import TapAndPlayOutlinedIcon from "@mui/icons-material/TapAndPlayOutlined";
-import HomeIcon from "@mui/icons-material/Home";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
