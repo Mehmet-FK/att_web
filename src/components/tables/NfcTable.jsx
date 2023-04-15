@@ -17,6 +17,7 @@ import NfcFilter from "../filters/NfcFilter";
 import { useMediaQuery } from "@mui/material";
 import ContextMenu from "../ContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
+import DownloadCSV from "../DownloadCSV";
 
 const tableStyle = {
   th: {
@@ -160,6 +161,7 @@ const NfcTable = () => {
             handlePagination={handlePagination}
             setRestart={setRestart}
           />
+          <DownloadCSV rawData={shownData} />
         </Box>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

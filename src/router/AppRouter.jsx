@@ -1,5 +1,10 @@
 import React from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  //  HashRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import AtinaItems from "../pages/AtinaItems";
 import AtinaUsers from "../pages/AtinaUsers";
 import Dashboard from "../pages/Dashboard";
@@ -11,7 +16,7 @@ import PrivateRouter from "./PrivateRouter";
 
 const AppRouter = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="atina" element={<PrivateRouter />}>
@@ -24,7 +29,7 @@ const AppRouter = () => {
           </Route>
         </Route>
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
