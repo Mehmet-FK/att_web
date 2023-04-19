@@ -117,7 +117,7 @@ export default function Dashboard() {
     {
       text: "Benutzer",
       icon: <PeopleAltIcon />,
-      nav: "users",
+      nav: "",
     },
     {
       text: "Mobile Buchungen",
