@@ -119,8 +119,7 @@ const UsersTable = () => {
 
   const { getUsersData } = useAtinaCalls();
   useEffect(() => {
-    console.log(getUsersData);
-    //TODO: getUsersData();
+    getUsersData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restart]);
 

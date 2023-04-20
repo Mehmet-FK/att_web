@@ -6,7 +6,7 @@ import useAtinaCalls from "../hooks/useAtinaCalls";
 const AtinaUsers = () => {
   const { getUsersData } = useAtinaCalls();
   useEffect(() => {
-    getUsersData();
+    console.log(getUsersData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
