@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import NfcIcon from "@mui/icons-material/Nfc";
 import { Outlet, useNavigate } from "react-router-dom";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+// import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import useAtinaCalls from "../hooks/useAtinaCalls";
 import logo from "../assets/attensam-logo.svg";
 import { Button, Paper, Tooltip, Typography } from "@mui/material";

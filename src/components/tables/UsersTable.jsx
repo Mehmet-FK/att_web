@@ -115,37 +115,12 @@ const UsersTable = () => {
   // Context Menu START
   const contextMenuRef = useRef(null);
 
-  //TODO: Set all functions in a custom hook
-
-  /* const handleRightClick = (e) => {
-    e.preventDefault();
-
-    let X = e.pageX;
-    let Y = e.pageY;
-    let winWidth = window.innerWidth;
-    // let cmWidth = contextMenuRef.current.offsetWidth;
-    let cmWidth = 250;
-    let winHeight = window.innerHeight;
-    // let cmHeight = contextMenuRef.current.offsetHeight;
-    let cmHeight = 300;
-    X = X > winWidth - cmWidth ? winWidth - cmWidth : X;
-    Y = Y > winHeight - cmHeight ? winHeight - cmHeight : Y;
-
-    setContextMenu({ ...contextMenu, show: true, x: X, y: Y });
-  };
-
-  const closeContextMenu = (event) => {
-    if (event.target.id !== "select") {
-      setContextMenu(initalContextMenu);
-    }
-    console.log(event.target.id);
-  }; */
-
   // Context Menu END
 
   const { getUsersData } = useAtinaCalls();
   useEffect(() => {
-    getUsersData();
+    console.log(getUsersData);
+    //TODO: getUsersData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restart]);
 
