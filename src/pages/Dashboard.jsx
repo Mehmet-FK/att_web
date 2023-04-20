@@ -114,11 +114,11 @@ export default function Dashboard() {
   }, []);
 
   const drawerList = [
-    {
+    /* {
       text: "Benutzer",
       icon: <PeopleAltIcon />,
       nav: "",
-    },
+    }, */
     {
       text: "Mobile Buchungen",
       icon: <LibraryBooksIcon />,
