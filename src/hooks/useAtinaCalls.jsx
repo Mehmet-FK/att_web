@@ -16,8 +16,9 @@ const useAtinaCalls = () => {
       dispatch(getSuccess({ data, url }));
     } catch (err) {
       const { message } = err;
-      dispatch(fetchFail({ message }));
+      // dispatch(fetchFail({ message }));
       console.log(err);
+      console.log(message);
     }
   };
 
