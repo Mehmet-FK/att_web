@@ -89,17 +89,6 @@ const UsersFilter = ({
       >
         {/* //? == ROW 1 == */}
         <Grid container sx={{ width: "95%", columnGap: "10px" }}>
-          {/* <Grid item md={2}> 
-            <TextField
-              onChange={handleChange}
-              value={filterVal.id || ""}
-              variant="outlined"
-              type={"number"}
-              size="small"
-              label="ID"
-              name="id"
-            />
-          </Grid> */}
           <Grid item md={3}>
             <TextField
               onChange={handleChange}
@@ -128,6 +117,78 @@ const UsersFilter = ({
               size="small"
               label="Benutzername"
               name="username"
+            />
+          </Grid>
+          <Grid item md={2}>
+            <TextField
+              // onChange={handleChange}
+              value={filterVal.timeFrom || ""}
+              className={"date-input"}
+              variant="outlined"
+              type="datetime-local"
+              size="small"
+              label="Erstellt (von)"
+              name="timeFrom"
+              sx={{ width: "100%", cursor: "pointer" }}
+              onChange={(e) => console.log(new Date(e.target.value).getTime())}
+              inputProps={{
+                sx: {
+                  "&::-webkit-datetime-edit-year-field": {
+                    color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-month-field": {
+                    color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-day-field": {
+                    color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-minute-field": {
+                    color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-hour-field": {
+                    color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-text": {
+                    color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                  },
+                },
+              }}
+            />
+          </Grid>
+          <Grid item md={2}>
+            <TextField
+              onChange={handleChange}
+              value={filterVal.timeTo || ""}
+              className={"date-input"}
+              variant="outlined"
+              type="datetime-local"
+              size="small"
+              label="Erstellt (bis)"
+              name="timeTo"
+              sx={{ width: "100%", cursor: "pointer" }}
+              inputProps={{
+                sx: {
+                  cursor: "pointer",
+                  "&::-webkit-datetime-edit-year-field": {
+                    color: filterVal.timeTo ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-month-field": {
+                    color: filterVal.timeTo ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-day-field": {
+                    color: filterVal.timeTo ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-minute-field": {
+                    color: filterVal.timeTo ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-hour-field": {
+                    color: filterVal.timeTo ? "inherit" : "#ddd5",
+                  },
+                  "&::-webkit-datetime-edit-text": {
+                    color: filterVal.timeTo ? "inherit" : "#ddd5",
+                  },
+                },
+              }}
             />
           </Grid>
           <Grid item md={2}>

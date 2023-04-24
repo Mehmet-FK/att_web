@@ -13,11 +13,12 @@ import { Box } from "@mui/system";
 import useAtinaCalls from "../../hooks/useAtinaCalls";
 // import ColumnSelect from "../ColumnSelect";
 import NfcFilter from "../filters/NfcFilter";
-
 import { useMediaQuery } from "@mui/material";
 import ContextMenu from "../ContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
 import DownloadCSV from "../DownloadCSV";
+import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
+import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
 
 const tableStyle = {
   th: {
@@ -62,6 +63,7 @@ const tableColumns = [
   "daten 8",
   "daten 9",
   "daten 10",
+  "erstellt am",
 ];
 const initalContextMenu = {
   show: false,
@@ -80,6 +82,7 @@ const NfcTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [shownData, setShownData] = useState(nfcTags);
   const [restart, setRestart] = useState(false);
+  const [newest, setNewest] = useState(true);
 
   const handlePagination = () => {
     let currentPage = rowsPerPage * page;
@@ -256,6 +259,23 @@ const NfcTable = () => {
                   daten 10
                 </TableCell>
               )}
+              {selectedColumns.includes("erstellt am") && (
+                <TableCell
+                  onClick={() => setNewest(!newest)}
+                  sx={{
+                    ...tableStyle.th.cell,
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: "5px",
+                    cursor: "pointer",
+                  }}
+                  align="left"
+                >
+                  <Box>erstellt am</Box>
+                  {newest && <VerticalAlignBottomIcon />}
+                  {!newest && <VerticalAlignTopIcon />}
+                </TableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -360,6 +380,11 @@ const NfcTable = () => {
                   {selectedColumns.includes("daten 10") && (
                     <TableCell sx={tableStyle.tr.cell} align="left">
                       {item?.data10 ? item?.data10 : ""}
+                    </TableCell>
+                  )}
+                  {selectedColumns.includes("erstellt am") && (
+                    <TableCell sx={tableStyle.tr.cell} align="left">
+                      {item?.createdDate}
                     </TableCell>
                   )}
                 </TableRow>

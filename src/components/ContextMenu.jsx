@@ -101,8 +101,6 @@ const ContextMenu = ({
       <Button onClick={() => setOpen({ ...open, columns: !open.columns })}>
         Spalten Verwalten
       </Button>
-      <Button onClick={() => setOpen({ ...open })}>Spalten Verwalten</Button>
-      <Button onClick={() => setOpen({ ...open })}>Spalten Verwalten</Button>
 
       {open.columns && (
         <ColumnMenu

@@ -182,7 +182,7 @@ const BookingsFilter = ({
               variant="outlined"
               type="datetime-local"
               size="small"
-              label="Datum-Uhrzeit (von)"
+              label="Erstellt (von)"
               name="timeFrom"
               sx={{ width: "100%", cursor: "pointer" }}
               onChange={(e) => console.log(new Date(e.target.value).getTime())}
@@ -218,7 +218,7 @@ const BookingsFilter = ({
               variant="outlined"
               type="datetime-local"
               size="small"
-              label="Datum-Uhrzeit  (bis)"
+              label="Erstellt (bis)"
               name="timeTo"
               sx={{ width: "100%", cursor: "pointer" }}
               inputProps={{

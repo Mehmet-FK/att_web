@@ -15,7 +15,8 @@ import { useMediaQuery } from "@mui/material";
 import ContextMenu from "../ContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
 import DownloadCSV from "../DownloadCSV";
-
+import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
+import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
 const tableStyle = {
   th: {
     cell: {
@@ -59,6 +60,7 @@ const tableColumns = [
   "daten 8",
   "daten 9",
   "daten 10",
+  "erstellt am",
 ];
 const initalContextMenu = {
   show: false,
@@ -78,6 +80,7 @@ const ItemsTable = () => {
   const [shownData, setShownData] = useState(atinaItems);
   const [restart, setRestart] = useState(false);
   const [itemType, setItemType] = useState(1);
+  const [newest, setNewest] = useState(true);
 
   const handlePagination = () => {
     let currentPage = rowsPerPage * page;
@@ -286,6 +289,23 @@ const ItemsTable = () => {
                   daten 10
                 </TableCell>
               )}
+              {selectedColumns.includes("erstellt am") && (
+                <TableCell
+                  onClick={() => setNewest(!newest)}
+                  sx={{
+                    ...tableStyle.th.cell,
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: "5px",
+                    cursor: "pointer",
+                  }}
+                  align="left"
+                >
+                  <Box>erstellt am</Box>
+                  {newest && <VerticalAlignBottomIcon />}
+                  {!newest && <VerticalAlignTopIcon />}
+                </TableCell>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -388,6 +408,11 @@ const ItemsTable = () => {
                   {selectedColumns.includes("daten 10") && (
                     <TableCell sx={tableStyle.tr.cell} align="left">
                       {item?.Data10 ? item?.data10 : ""}
+                    </TableCell>
+                  )}
+                  {selectedColumns.includes("erstellt am") && (
+                    <TableCell sx={tableStyle.tr.cell} align="left">
+                      {item?.CreatedDate}
                     </TableCell>
                   )}
                 </TableRow>

@@ -80,6 +80,11 @@ const CustomTableRow = ({ booking, tableStyle, selectedColumns }) => {
           {booking?.country}
         </TableCell>
       )}
+      {selectedColumns.includes("erstellt am") && (
+        <TableCell sx={tableStyle.tr.cell} align="left">
+          {booking?.createdDate}
+        </TableCell>
+      )}
     </TableRow>
   );
 };

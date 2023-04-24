@@ -94,17 +94,80 @@ const NfcFilter = ({ filterVal, setFilterVal, handleFilter, handleReset }) => {
               rowGap: "10px",
             }}
           >
-            {/* <Grid item md={1}>
+            <Grid item md={2}>
+              <TextField
+                // onChange={handleChange}
+                value={filterVal.timeFrom || ""}
+                className={"date-input"}
+                variant="outlined"
+                type="datetime-local"
+                size="small"
+                label="Erstellt (von)"
+                name="timeFrom"
+                sx={{ width: "100%", cursor: "pointer" }}
+                onChange={(e) =>
+                  console.log(new Date(e.target.value).getTime())
+                }
+                inputProps={{
+                  sx: {
+                    "&::-webkit-datetime-edit-year-field": {
+                      color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-month-field": {
+                      color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-day-field": {
+                      color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-minute-field": {
+                      color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-hour-field": {
+                      color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-text": {
+                      color: filterVal.timeFrom ? "inherit" : "#ddd5",
+                    },
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item md={2}>
               <TextField
                 onChange={handleChange}
-                value={filterVal.id || ""}
+                value={filterVal.timeTo || ""}
+                className={"date-input"}
                 variant="outlined"
-                type={"number"}
+                type="datetime-local"
                 size="small"
-                label="ID"
-                name="id"
+                label="Erstellt (bis)"
+                name="timeTo"
+                sx={{ width: "100%", cursor: "pointer" }}
+                inputProps={{
+                  sx: {
+                    cursor: "pointer",
+                    "&::-webkit-datetime-edit-year-field": {
+                      color: filterVal.timeTo ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-month-field": {
+                      color: filterVal.timeTo ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-day-field": {
+                      color: filterVal.timeTo ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-minute-field": {
+                      color: filterVal.timeTo ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-hour-field": {
+                      color: filterVal.timeTo ? "inherit" : "#ddd5",
+                    },
+                    "&::-webkit-datetime-edit-text": {
+                      color: filterVal.timeTo ? "inherit" : "#ddd5",
+                    },
+                  },
+                }}
               />
-            </Grid> */}
+            </Grid>
             <Grid item md={2}>
               <TextField
                 onChange={handleChange}
@@ -125,6 +188,7 @@ const NfcFilter = ({ filterVal, setFilterVal, handleFilter, handleReset }) => {
                 name="itemNumber"
               />
             </Grid>
+
             <Grid item md={2}>
               <TextField
                 onChange={handleChange}
@@ -135,7 +199,7 @@ const NfcFilter = ({ filterVal, setFilterVal, handleFilter, handleReset }) => {
                 name="street"
               />
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={1}>
               <TextField
                 onChange={handleChange}
                 value={filterVal.streetnumber || ""}
@@ -215,7 +279,7 @@ const NfcFilter = ({ filterVal, setFilterVal, handleFilter, handleReset }) => {
                 name="data4"
               />
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={1}>
               <TextField
                 onChange={handleChange}
                 value={filterVal.data5 || ""}

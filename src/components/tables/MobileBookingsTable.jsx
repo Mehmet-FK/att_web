@@ -6,19 +6,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
-
 import Pagination from "../Pagination";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import useAtinaCalls from "../../hooks/useAtinaCalls";
-// import ColumnSelect from "../ColumnSelect";
-// import BookingsFilter from "../BookingsFilter";
 import { useMediaQuery } from "@mui/material";
 import BookingsFilter from "../filters/BookingsFilter";
 import CustomTableRow from "../BookingsTableRow";
 import ContextMenu from "../ContextMenu";
 import useContextMenu from "../../hooks/useContextMenu";
 import DownloadCSV from "../DownloadCSV";
+import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
+import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
 
 const tableStyle = {
   th: {
@@ -53,6 +52,7 @@ const tableColumns = [
   "plz",
   "stadt",
   "land",
+  "erstellt am",
 ];
 
 const initalContextMenu = {
@@ -72,6 +72,7 @@ const MobileBookingsTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [shownData, setShownData] = useState();
   const [restart, setRestart] = useState(false);
+  const [newest, setNewest] = useState(true);
 
   const handlePagination = () => {
     let currentPage = rowsPerPage * page;
@@ -186,11 +187,6 @@ const MobileBookingsTable = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {/* {selectedColumns.map((item, i) => (
-                <TableCell sx={tableStyle.th.cell} key={i} align="left">
-                  {item}
-                </TableCell>
-              ))} */}
               {selectedColumns.includes("datum") && (
                 <TableCell sx={tableStyle.th.cell} align="left">
                   datum
@@ -229,6 +225,23 @@ const MobileBookingsTable = () => {
               {selectedColumns.includes("land") && (
                 <TableCell sx={tableStyle.th.cell} align="left">
                   land
+                </TableCell>
+              )}
+              {selectedColumns.includes("erstellt am") && (
+                <TableCell
+                  onClick={() => setNewest(!newest)}
+                  sx={{
+                    ...tableStyle.th.cell,
+                    display: "flex",
+                    alignItems: "center",
+                    columnGap: "5px",
+                    cursor: "pointer",
+                  }}
+                  align="left"
+                >
+                  <Box>erstellt am</Box>
+                  {newest && <VerticalAlignBottomIcon />}
+                  {!newest && <VerticalAlignTopIcon />}
                 </TableCell>
               )}
             </TableRow>
