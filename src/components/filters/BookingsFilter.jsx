@@ -37,7 +37,6 @@ const BookingsFilter = ({
       component={Paper}
       sx={{
         width: "100%",
-        maxWidth: "1250px",
         margin: xxl ? "0 0 0 5%" : "auto",
         display: "flex",
         flexDirection: "column",
@@ -86,7 +85,7 @@ const BookingsFilter = ({
           display: open ? "flex" : "none",
           flexDirection: "column",
 
-          paddingInline: "2rem",
+          paddingInline: "1rem",
         }}
       >
         {/* //? == ROW 1 == */}
@@ -99,17 +98,6 @@ const BookingsFilter = ({
             paddingLeft: "1rem",
           }}
         >
-          {/* <Grid item md={2}>
-            <TextField
-              onChange={handleChange}
-              value={filterVal.id || ""}
-              variant="outlined"
-              type={"number"}
-              size="small"
-              label="ID"
-              name="id"
-            />
-          </Grid> */}
           <Grid item md={2}>
             <TextField
               onChange={handleChange}

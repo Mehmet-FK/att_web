@@ -23,18 +23,6 @@ const CustomTableRow = ({ booking, tableStyle, selectedColumns }) => {
       }}
       onClick={handleDblClick}
     >
-      {/*   <TableCell
-        sx={{ ...tableStyle.tr.cell, paddingLeft: "10px" }}
-        component="th"
-        scope="row"
-      >
-        <BookingsModal
-          openBookingModal={openBookingModal}
-          setOpenBookingModal={setOpenBookingModal}
-          booking={booking}
-        />
-        {booking?.id}
-      </TableCell> */}
       {selectedColumns.includes("datum") && (
         <TableCell sx={tableStyle.tr.cell} align="left" scope="row">
           <BookingsModal
@@ -82,7 +70,7 @@ const CustomTableRow = ({ booking, tableStyle, selectedColumns }) => {
       )}
       {selectedColumns.includes("erstellt am") && (
         <TableCell sx={tableStyle.tr.cell} align="left">
-          {booking?.createdDate}
+          {JSON.stringify(booking?.createdDate)}
         </TableCell>
       )}
     </TableRow>

@@ -97,6 +97,24 @@ const ItemsTable = () => {
     setFilterVal({});
     handlePagination();
   };
+
+  const handleSort = () => {
+    const arr = shownData.map((item) => ({
+      ...item,
+      CreatedDate: new Date(item.CreatedDate),
+    }));
+
+    if (newest) {
+      let temp = arr.sort((a, b) => b.CreatedDate - a.CreatedDate);
+      setNewest(!newest);
+      setShownData(temp);
+    } else {
+      let temp = arr.sort((a, b) => a.CreatedDate - b.CreatedDate);
+      setNewest(!newest);
+      setShownData(temp);
+    }
+  };
+
   // ===Table Filter END===
 
   // === Column Select START ===
@@ -110,22 +128,16 @@ const ItemsTable = () => {
 
   useEffect(() => {
     getAtinaItemsData(itemType);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restart, itemType]);
 
   useEffect(() => {
     handlePagination();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, rowsPerPage, atinaItems]);
   return (
     <>
-      <NfcFilter
-        handleReset={handleReset}
-        handleFilter={handleFilter}
-        filterVal={filterVal}
-        setFilterVal={setFilterVal}
-      />
       {contextMenu.show && (
         <ContextMenu
           X={contextMenu.x}
@@ -143,10 +155,16 @@ const ItemsTable = () => {
         sx={{
           maxWidth: xxl ? "90%" : { lg: "1250px" },
           margin: "auto",
-          padding: "1rem 10px",
+          padding: "0.5rem 10px",
           position: "relative",
         }}
       >
+        <NfcFilter
+          handleReset={handleReset}
+          handleFilter={handleFilter}
+          filterVal={filterVal}
+          setFilterVal={setFilterVal}
+        />
         <Box
           sx={{ display: "flex", justifyContent: "end", alignItems: "center" }}
         >
@@ -199,11 +217,6 @@ const ItemsTable = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {/*  {selectedColumns.map((item, i) => (
-                <TableCell sx={tableStyle.th.cell} key={i} align="left">
-                  {item}
-                </TableCell>
-              ))} */}
               {selectedColumns.includes("typ") && (
                 <TableCell sx={tableStyle.th.cell} align="left">
                   Typ
@@ -291,7 +304,7 @@ const ItemsTable = () => {
               )}
               {selectedColumns.includes("erstellt am") && (
                 <TableCell
-                  onClick={() => setNewest(!newest)}
+                  onClick={handleSort}
                   sx={{
                     ...tableStyle.th.cell,
                     display: "flex",
@@ -412,7 +425,7 @@ const ItemsTable = () => {
                   )}
                   {selectedColumns.includes("erstellt am") && (
                     <TableCell sx={tableStyle.tr.cell} align="left">
-                      {item?.CreatedDate}
+                      {JSON.stringify(item?.CreatedDate)}
                     </TableCell>
                   )}
                 </TableRow>

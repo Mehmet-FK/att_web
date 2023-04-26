@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  // BrowserRouter,
-  HashRouter,
+  BrowserRouter,
+  // HashRouter,
   Route,
   Routes,
 } from "react-router-dom";
@@ -16,8 +16,8 @@ import PrivateRouter from "./PrivateRouter";
 
 const AppRouter = () => {
   return (
-    // <BrowserRouter>
-    <HashRouter>
+    <BrowserRouter>
+      {/* <HashRouter> */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="atina" element={<PrivateRouter />}>
@@ -30,8 +30,8 @@ const AppRouter = () => {
           </Route>
         </Route>
       </Routes>
-    </HashRouter>
-    // </BrowserRouter>
+      {/* </HashRouter> */}
+    </BrowserRouter>
   );
 };
 

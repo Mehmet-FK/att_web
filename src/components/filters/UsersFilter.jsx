@@ -41,7 +41,7 @@ const UsersFilter = ({
         flexDirection: "column",
         alignItems: "start",
         justifyContent: "center",
-        height: open ? "10rem" : "3rem",
+        height: open ? "13rem" : "3rem",
         transition: "all 0.3s",
         position: "sticky",
         top: "4.1rem",
@@ -83,13 +83,16 @@ const UsersFilter = ({
           transition: "all 0.3s",
           display: open ? "flex" : "none",
           flexDirection: "column",
-          rowGap: "15px",
+          rowGap: "5px",
           paddingInline: "2rem",
         }}
       >
         {/* //? == ROW 1 == */}
-        <Grid container sx={{ width: "95%", columnGap: "10px" }}>
-          <Grid item md={3}>
+        <Grid
+          container
+          sx={{ width: "95%", columnGap: "10px", rowGap: "10px" }}
+        >
+          <Grid item md={2}>
             <TextField
               onChange={handleChange}
               value={filterVal.firstname || ""}
@@ -99,7 +102,7 @@ const UsersFilter = ({
               name="firstname"
             />
           </Grid>
-          <Grid item md={3}>
+          <Grid item md={2}>
             <TextField
               onChange={handleChange}
               value={filterVal.lastname || ""}
@@ -109,7 +112,7 @@ const UsersFilter = ({
               name="lastname"
             />
           </Grid>
-          <Grid item md={3}>
+          <Grid item md={2}>
             <TextField
               onChange={handleChange}
               value={filterVal.username || ""}

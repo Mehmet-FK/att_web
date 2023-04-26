@@ -8,7 +8,6 @@ import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
 
 import { useMediaQuery } from "@mui/material";
-// import UsersFilter from "../UsersFilter";
 import Pagination from "../Pagination";
 import { useEffect, useRef, useState } from "react";
 import { Box } from "@mui/system";
@@ -61,7 +60,6 @@ const UsersTable = () => {
   const { atinaUsers } = useSelector((state) => state.atina);
   const [contextMenu, setContextMenu] = useState(initalContextMenu);
   const [restart, setRestart] = useState(false);
-  console.log(restart);
   const { handleRightClick } = useContextMenu(contextMenu, setContextMenu);
 
   // ===pagination states START===

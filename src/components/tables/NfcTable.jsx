@@ -99,6 +99,25 @@ const NfcTable = () => {
     setFilterVal({});
     handlePagination();
   };
+
+  const handleSort = () => {
+    const arr = shownData.map((item) => ({
+      ...item,
+      createdDate: new Date(item.createdDate),
+    }));
+    console.log(arr);
+
+    if (newest) {
+      let temp = arr.sort((a, b) => b.createdDate - a.createdDate);
+      setNewest(!newest);
+      setShownData(temp);
+    } else {
+      let temp = arr.sort((a, b) => a.createdDate - b.createdDate);
+      setNewest(!newest);
+      setShownData(temp);
+    }
+  };
+
   // ===Table Filter END===
 
   // === Column Select START ===
@@ -122,12 +141,6 @@ const NfcTable = () => {
 
   return (
     <>
-      <NfcFilter
-        handleReset={handleReset}
-        handleFilter={handleFilter}
-        filterVal={filterVal}
-        setFilterVal={setFilterVal}
-      />
       {contextMenu.show && (
         <ContextMenu
           X={contextMenu.x}
@@ -145,10 +158,16 @@ const NfcTable = () => {
         sx={{
           maxWidth: xxl ? "90%" : { lg: "1250px" },
           margin: "auto",
-          padding: "1rem 10px",
+          padding: "0.5rem 10px",
           position: "relative",
         }}
       >
+        <NfcFilter
+          handleReset={handleReset}
+          handleFilter={handleFilter}
+          filterVal={filterVal}
+          setFilterVal={setFilterVal}
+        />
         <Box sx={{ display: "flex", justifyContent: "end" }}>
           {/* <ColumnSelect
             tableColumns={tableColumns}
@@ -261,7 +280,7 @@ const NfcTable = () => {
               )}
               {selectedColumns.includes("erstellt am") && (
                 <TableCell
-                  onClick={() => setNewest(!newest)}
+                  onClick={() => handleSort()}
                   sx={{
                     ...tableStyle.th.cell,
                     display: "flex",
@@ -279,12 +298,12 @@ const NfcTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {shownData?.map((tag) => {
+            {shownData?.map((tag, i) => {
               const { item } = tag;
 
               return (
                 <TableRow
-                  key={item.id}
+                  key={i}
                   sx={{
                     "&:last-child td, &:last-child th": { border: 0 },
                     "&:hover": { backgroundColor: "#ddd" },
@@ -384,9 +403,17 @@ const NfcTable = () => {
                   )}
                   {selectedColumns.includes("erstellt am") && (
                     <TableCell sx={tableStyle.tr.cell} align="left">
-                      {item?.createdDate}
+                      {JSON.stringify(new Date(tag?.createdDate))}
                     </TableCell>
                   )}
+                  {/*  {selectedColumns.includes("erstellt am") && (
+                    <TableCell sx={tableStyle.tr.cell} align="left">
+                      {item?.createdDate.slice(
+                        0,
+                        item?.createdDate.indexOf("T")
+                      )}
+                    </TableCell>
+                  )} */}
                 </TableRow>
               );
             })}

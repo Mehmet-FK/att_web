@@ -29,7 +29,7 @@ const NfcFilter = ({ filterVal, setFilterVal, handleFilter, handleReset }) => {
       component={Paper}
       sx={{
         width: "100%",
-        maxWidth: "1250px",
+        // maxWidth: "1250px",
         margin: xxl ? "0 0 0 5%" : "auto",
         // paddingBottom: "5rem",
         display: "flex",
@@ -39,7 +39,7 @@ const NfcFilter = ({ filterVal, setFilterVal, handleFilter, handleReset }) => {
         height: open ? "12.5rem" : "3rem",
         transition: "all 0.3s",
         position: "sticky",
-        top: "4.1rem",
+        // top: "4.1rem",
         zIndex: "3",
         border: "1px solid #ddd5",
         borderRadius: "0 1rem 0 0",

@@ -115,6 +115,25 @@ const MobileBookingsTable = () => {
     setFilterVal({});
     handleFilter();
   };
+
+  const handleSort = () => {
+    const arr = shownData.map((item) => ({
+      ...item,
+      createdDate: new Date(item.createdDate),
+    }));
+    console.log(arr);
+
+    if (newest) {
+      let temp = arr.sort((a, b) => b.createdDate - a.createdDate);
+      setNewest(!newest);
+      setShownData(temp);
+    } else {
+      let temp = arr.sort((a, b) => a.createdDate - b.createdDate);
+      setNewest(!newest);
+      setShownData(temp);
+    }
+  };
+
   // ===Table Filter END===
 
   // === Column Select START ===
@@ -156,12 +175,7 @@ const MobileBookingsTable = () => {
           setSelectedColumns={setSelectedColumns}
         />
       )}
-      <BookingsFilter
-        handleReset={handleReset}
-        handleFilter={handleFilter}
-        filterVal={filterVal}
-        setFilterVal={setFilterVal}
-      />
+
       <TableContainer
         component={Paper}
         onContextMenu={handleRightClick}
@@ -172,6 +186,12 @@ const MobileBookingsTable = () => {
           position: "relative",
         }}
       >
+        <BookingsFilter
+          handleReset={handleReset}
+          handleFilter={handleFilter}
+          filterVal={filterVal}
+          setFilterVal={setFilterVal}
+        />
         <Box sx={{ display: "flex", justifyContent: "end" }}>
           <Pagination
             data={mobileBookings}
@@ -229,7 +249,7 @@ const MobileBookingsTable = () => {
               )}
               {selectedColumns.includes("erstellt am") && (
                 <TableCell
-                  onClick={() => setNewest(!newest)}
+                  onClick={() => handleSort()}
                   sx={{
                     ...tableStyle.th.cell,
                     display: "flex",

@@ -19,18 +19,6 @@ const CustomTableRow = ({ user, selectedColumns, tableStyle }) => {
       }}
       onClick={handleDblClick}
     >
-      {/* <UserModal
-        setOpenUserModal={setOpenUserModal}
-        openUserModal={openUserModal}
-        user={user}
-      /> */}
-      {/* <TableCell
-        sx={{ ...tableStyle.tr.cell, paddingLeft: "10px" }}
-        component="th"
-        scope="row"
-      >
-        {user?.id}
-      </TableCell> */}
       {selectedColumns.includes("vorname") && (
         <TableCell sx={tableStyle.tr.cell} align="left" scope="row">
           <UserModal
